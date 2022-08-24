@@ -6,7 +6,7 @@ Basic Requirements:
 
 * System dependencies - Mac / Linux / Ubuntu
 
-* Database creation - rake db:create
+* Database creation - rails db:setup
 
 * Test Case - bundle exec rspec
 
