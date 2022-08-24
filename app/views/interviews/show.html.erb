@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Candidate:</strong>
+  <%= @interview.candidate.name %>
+</p>
+
+<p>
+  <strong>Employee:</strong>
+  <%= @interview.employee.name %>
+</p>
+
+<p>
+  <strong>Round:</strong>
+  <%= @interview.round %>
+</p>
+
+<p>
+  <strong>Start Time:</strong>
+  <%= @interview.start_time %>
+</p>
+
+<p>
+  <strong>End Time:</strong>
+  <%= @interview.end_time %>
+</p>
+
+<p>
+  <strong>Remarks:</strong>
+  <%= @interview.remarks %>
+</p>
+
+<%= link_to 'Edit', edit_interview_path(@interview) %> |
+<%= link_to 'Back', interviews_path %>

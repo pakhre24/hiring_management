@@ -1,0 +1,47 @@
+
+<%= form_tag "/reports", method: :get, id: "searchForm" do %>
+<table class="table table-hover">
+<tr style="border-bottom-style: hidden;" class="custom-header-filter">
+  <td>
+    <%= select_tag "report", options_for_select([["Candidates having average ratings above 3 (average of 3 rounds)", 'avg_rating_above_3'], ["Candidates having average ratings above 3 and no rating below 2 in any of three round", 'avg_rating_above_3_no_below_2']]), prompt: "Please Select" %>
+  </td>
+
+  <td>
+    <%= submit_tag 'Search' %>
+  </td>
+</tr>
+</table>
+<% end %>
+
+
+<h1>Candidate Lists</h1>
+
+<% if @candidates.present? %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Experience</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @candidates.each do |candidate| %>
+      <tr>
+        <td><%= candidate.name %></td>
+        <td><%= candidate.email %></td>
+        <td><%= candidate.experience %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%else%>
+
+<h1>Please select reports / No Candidate present.</h1>
+
+<%end%>
+
+<%= link_to 'Dashboard', root_path %>

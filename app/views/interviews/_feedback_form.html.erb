@@ -1,0 +1,31 @@
+<%= form_for @interview, method: :post, url: submit_feedback_interview_path(@interview) do |f| -%>
+<% if @interview.interview_skill_ratings.exists? %>
+
+    <%= f.fields_for :interview_skill_ratings do |ff| %>
+      <div class="field">
+        <%= ff.label "#{ff.object.core_skill.name} Rating out of 5" %>
+        <%= ff.hidden_field :core_skill_id, value: "#{ff.object.core_skill.id}" %>
+        <%= ff.number_field :score, max: 5, min: 0, step: :any %>
+      </div><br>
+    <% end %>
+
+<%else%>
+
+  <% @interview.candidate.skills.each do |skill| %>
+    <%= f.fields_for :interview_skill_ratings do |ff| %>
+      <div class="field">
+        <%= ff.label "#{skill.name} Rating out of 5" %>
+        <%= ff.hidden_field :core_skill_id, value: "#{skill.id}" %>
+        <%= ff.number_field :score, max: 5, min: 0, step: :any %>
+      </div><br>
+    <% end %>
+  <% end %>
+  
+<%end%>  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+

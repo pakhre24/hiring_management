@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Candidates</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Dob</th>
+      <th>Email</th>
+      <th>Experience</th>
+      <th>Core Skills</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @candidates.each do |candidate| %>
+      <tr>
+        <td><%= candidate.name %></td>
+        <td><%= candidate.dob %></td>
+        <td><%= candidate.email %></td>
+        <td><%= candidate.experience %></td>
+        <td><%= get_user_skills(candidate) %></td>
+        <td><%= link_to 'Show', candidate %></td>
+        <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Candidate', new_candidate_path %>
+<%= link_to 'Dashboard', root_path %>
